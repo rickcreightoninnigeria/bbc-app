@@ -1,3 +1,4 @@
+import { Stack } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
 interface Team {
@@ -37,15 +38,13 @@ function TeamCard({ team }: { team: Team }) {
   );
 }
 
-export default function Serve() {
+export default function JoinATeam() {
   return (
     <ScrollView className="flex-1 bg-bg dark:bg-bg-dark" contentContainerClassName="px-5 pt-6 pb-12">
-      <Text className="text-2xl font-bold text-make dark:text-make-dark">
-        Serve Joyfully & Sacrificially
-      </Text>
+      <Stack.Screen options={{ title: 'Join a Team' }} />
+      <Text className="text-2xl font-bold text-make dark:text-make-dark">Join a Team</Text>
       <Text className="mt-2 text-sm text-ink-soft dark:text-ink-soft-dark">
-        Serving isn't reserved for the especially gifted or the especially free — it's an
-        ordinary part of belonging to BBC. Here are the teams that keep our gatherings running.
+        Here are the teams that keep our gatherings running.
       </Text>
 
       <View className="mt-6 border-t border-rule pt-2 dark:border-rule-dark">
