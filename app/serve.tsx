@@ -59,8 +59,8 @@ export default function Serve() {
           Interested in joining a team?
         </Text>
         <Text className="mt-2 text-sm text-ink dark:text-ink-dark">
-          Draft placeholder — there's no sign-up process yet. This needs a real contact route
-          (an email, a WhatsApp number, or a named person per team) before this section is done.
+          Let us know which team interests you — email{' '}
+          <Text className="text-link dark:text-link-dark">[sign up email]</Text>.
         </Text>
       </View>
     </ScrollView>
