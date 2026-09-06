@@ -49,6 +49,7 @@ lib/
   givingReminders.ts      expo-notifications scheduling for weekly/monthly reminders
   useGivingPlan.ts        Hook tying the above together for GivingPlanSection
   giftsSurvey.ts          Gift list, survey statements, scoring, Supabase submission
+  prayerWall.ts           Prayer Request Wall: fetch/post/pray-count via Supabase + TanStack Query
 supabase/
   migrations/             SQL to run in your Supabase project's SQL editor
 ```
@@ -84,19 +85,30 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   see another's results — only a project admin, via the Supabase dashboard,
   can. There's no in-app admin view yet; that's the next real step once
   there's a live Supabase project (see below).
+- **The Prayer Request Wall only implements the "public" visibility tier.**
+  The original feature called for public/group/leaders-only requests, but
+  group and leaders-only both need auth + Community Group membership, which
+  this app doesn't have yet. Everything posted is visible to anyone using the
+  app — the screen says so explicitly. Requests live in Supabase
+  (`prayer_requests`, see `supabase/migrations/0002_prayer_requests.sql`);
+  the "praying" counter increments through a security-definer Postgres
+  function rather than a direct UPDATE grant, so posting can't be used to
+  tamper with someone else's request text.
 
-## Setting up Supabase (needed for the Gifts Survey to actually save anything)
+## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 
 1. Create a project at [supabase.com](https://supabase.com) (free tier is fine to start).
-2. In the project's SQL Editor, run everything in `supabase/migrations/0001_gift_survey_responses.sql`.
+2. In the project's SQL Editor, run everything in each file under `supabase/migrations/`, in order.
 3. From Project Settings → API, copy the Project URL and the `anon` public key
    into your `.env` as `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`.
 4. Restart `expo start` so the new env vars are picked up.
 
-Until this is done, the survey still works end-to-end in the app, but results
-aren't saved anywhere — the app tells the user this rather than pretending to
-succeed. To actually read submitted responses, use the Supabase dashboard's
-Table Editor (there's no in-app admin view yet).
+Until this is done, the Gifts Survey still works end-to-end but tells the
+user results weren't saved, and the Prayer Wall shows a "not connected yet"
+message instead of a composer/list — neither pretends to succeed. To read
+submitted gift survey responses, use the Supabase dashboard's Table Editor
+(there's no in-app admin view yet); prayer requests are visible in the app
+itself, to anyone, since that tier needs no login.
 
 ## Getting started
 
