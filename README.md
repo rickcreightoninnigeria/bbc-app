@@ -48,6 +48,9 @@ lib/
   givingStorage.ts        AsyncStorage-backed giving plan + history (on-device, private)
   givingReminders.ts      expo-notifications scheduling for weekly/monthly reminders
   useGivingPlan.ts        Hook tying the above together for GivingPlanSection
+  giftsSurvey.ts          Gift list, survey statements, scoring, Supabase submission
+supabase/
+  migrations/             SQL to run in your Supabase project's SQL editor
 ```
 
 Adding a new feature under an existing value means editing `constants/values.ts`
@@ -73,6 +76,27 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   Spotify via linktr.ee. Don't call the YouTube Data API from the client —
   a scheduled backend job should sync video metadata into Supabase instead, so
   no API key is exposed client-side and quota is controlled.
+- **The Spiritual Gifts Survey is the opposite privacy model from the giving
+  plan.** Its whole point is a "matcher" — results are submitted to Supabase
+  (`gift_survey_responses`) so leadership can follow up, and there's
+  deliberately no read access for the anon/authenticated roles (see
+  `supabase/migrations/0001_gift_survey_responses.sql`), so one member can't
+  see another's results — only a project admin, via the Supabase dashboard,
+  can. There's no in-app admin view yet; that's the next real step once
+  there's a live Supabase project (see below).
+
+## Setting up Supabase (needed for the Gifts Survey to actually save anything)
+
+1. Create a project at [supabase.com](https://supabase.com) (free tier is fine to start).
+2. In the project's SQL Editor, run everything in `supabase/migrations/0001_gift_survey_responses.sql`.
+3. From Project Settings → API, copy the Project URL and the `anon` public key
+   into your `.env` as `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`.
+4. Restart `expo start` so the new env vars are picked up.
+
+Until this is done, the survey still works end-to-end in the app, but results
+aren't saved anywhere — the app tells the user this rather than pretending to
+succeed. To actually read submitted responses, use the Supabase dashboard's
+Table Editor (there's no in-app admin view yet).
 
 ## Getting started
 
