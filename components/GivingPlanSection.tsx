@@ -1,6 +1,7 @@
 import { Link } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 
+import { TextLink } from './TextLink';
 import { daysSince, formatDate, formatNaira } from '../lib/givingFormat';
 import { useGivingPlan } from '../lib/useGivingPlan';
 
@@ -55,9 +56,9 @@ export function GivingPlanSection() {
         <Pressable onPress={markGivenToday} className="rounded bg-make px-4 py-2 active:opacity-60">
           <Text className="text-sm font-semibold text-white">Mark as given today</Text>
         </Pressable>
-        <Link href="/giving-plan" className="px-4 py-2 text-sm text-link dark:text-link-dark">
+        <TextLink href="/giving-plan" className="px-4 py-2" underline={false}>
           Edit plan
-        </Link>
+        </TextLink>
       </View>
 
       {history.length > 0 ? (

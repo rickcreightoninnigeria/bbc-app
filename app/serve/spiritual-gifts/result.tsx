@@ -1,6 +1,7 @@
-import { Link, Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
+import { TextLink } from '../../../components/TextLink';
 import { giftByKey } from '../../../lib/giftsSurvey';
 import { isSupabaseConfigured } from '../../../lib/supabase';
 
@@ -32,9 +33,9 @@ export default function GiftSurveyResult() {
         ))}
       </View>
 
-      <Link href="/serve/join-a-team" className="mt-2 text-sm underline text-link dark:text-link-dark">
+      <TextLink href="/serve/join-a-team" className="mt-2">
         See BBC's serving teams
-      </Link>
+      </TextLink>
     </ScrollView>
   );
 }

@@ -1,7 +1,8 @@
-import { Link, Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
 import { FeatureList } from './FeatureList';
+import { TextLink } from './TextLink';
 import { PILLAR_STYLES } from '../constants/theme';
 import { findPillar, findValue, type PillarSlug } from '../constants/values';
 
@@ -31,9 +32,9 @@ export function ValueDetailScreen({ pillar }: { pillar: PillarSlug }) {
             Also see
           </Text>
           {value.crossLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="mb-2 text-sm underline text-link dark:text-link-dark">
+            <TextLink key={link.href} href={link.href} className="mb-2">
               {link.label}
-            </Link>
+            </TextLink>
           ))}
         </View>
       ) : null}

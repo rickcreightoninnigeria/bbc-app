@@ -1,7 +1,7 @@
-import { Link } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
 import { GivingPlanSection } from '../components/GivingPlanSection';
+import { TextLink } from '../components/TextLink';
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
@@ -53,9 +53,9 @@ export default function Give() {
         <Text className="mt-2 text-sm text-ink dark:text-ink-dark">
           However much or little, give freely and joyfully — that's the whole point.
         </Text>
-        <Link href="/resourcing-vision" className="mt-3 text-sm underline text-link dark:text-link-dark">
+        <TextLink href="/resourcing-vision" className="mt-3">
           Read more: Resourcing our Church Vision with Money
-        </Link>
+        </TextLink>
       </View>
 
       <GivingPlanSection />
