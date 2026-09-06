@@ -163,7 +163,8 @@ export async function submitGiftSurveyResponse(
   if (!isSupabaseConfigured) {
     return { ok: false, error: 'not-configured' };
   }
-  const { error } = await supabase.from('gift_survey_responses').insert({
+  // Guarded above: isSupabaseConfigured is only true when supabase is non-null.
+  const { error } = await supabase!.from('gift_survey_responses').insert({
     respondent_name: input.name,
     respondent_contact: input.contact || null,
     mode: input.mode,
