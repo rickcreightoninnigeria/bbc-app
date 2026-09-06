@@ -45,6 +45,9 @@ constants/
 lib/
   supabase.ts            Supabase client (reads EXPO_PUBLIC_SUPABASE_* env vars)
   queryClient.ts          TanStack Query client
+  givingStorage.ts        AsyncStorage-backed giving plan + history (on-device, private)
+  givingReminders.ts      expo-notifications scheduling for weekly/monthly reminders
+  useGivingPlan.ts        Hook tying the above together for GivingPlanSection
 ```
 
 Adding a new feature under an existing value means editing `constants/values.ts`
@@ -57,6 +60,12 @@ Adding a new feature under an existing value means editing `constants/values.ts`
 - **Giving has no payment processing.** BBC gives by bank transfer or in person
   (cash), not card — so `/give` is informational (bank details, teaching
   content) plus a personal giving-plan/reminder feature, never a checkout flow.
+- **The giving plan is on-device only, not in Supabase.** It's stored in
+  AsyncStorage and never leaves the phone — deliberately private (no admin
+  visibility), matching the "give in secret" instinct. Reminders use local
+  notifications (`expo-notifications`), which work in Expo Go without a dev
+  build. There's no bank-transaction verification and no leaderboard/streaks —
+  it's a self-reported journal, not a payment or accountability system.
 - **Prayer Triplets** stay distinct from Community Groups (per the Small Group
   Strategy v2 doc), but are crosslinked from both Make → Pray Always and
   Disciples → Family.

@@ -1,6 +1,8 @@
 import { Link } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
+import { GivingPlanSection } from '../components/GivingPlanSection';
+
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <View className="flex-row justify-between py-1.5">
@@ -56,15 +58,7 @@ export default function Give() {
         </Link>
       </View>
 
-      <View className="mt-6 border-t border-rule dark:border-rule-dark pt-4">
-        <Text className="text-xs uppercase tracking-wider text-ink-faint dark:text-ink-faint-dark">
-          My giving plan
-        </Text>
-        <Text className="mt-2 text-sm text-ink dark:text-ink-dark">
-          Draft placeholder — a personal record of what a member intends to give and when, with
-          optional reminders. No payment is collected in-app.
-        </Text>
-      </View>
+      <GivingPlanSection />
     </ScrollView>
   );
 }
