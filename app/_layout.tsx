@@ -16,6 +16,10 @@ export default function RootLayout() {
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="give" options={{ presentation: 'modal', title: 'Give' }} />
+            <Stack.Screen
+              name="resourcing-vision"
+              options={{ title: 'Resourcing our Church Vision with Money' }}
+            />
             <Stack.Screen name="directory" options={{ presentation: 'modal', title: 'Member Directory' }} />
             <Stack.Screen name="calendar" options={{ presentation: 'modal', title: 'Calendar' }} />
             <Stack.Screen name="prayer-triplets" options={{ presentation: 'modal', title: 'Prayer Triplets' }} />
