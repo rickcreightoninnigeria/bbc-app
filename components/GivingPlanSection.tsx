@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Pressable, Switch, Text, TextInput, useColorScheme, View } from 'react-native';
 
+import { remindersAvailable } from '../lib/givingReminders';
 import type { GivingFrequency } from '../lib/givingStorage';
 import { useGivingPlan } from '../lib/useGivingPlan';
 
@@ -120,10 +121,17 @@ export function GivingPlanSection() {
         />
 
         {frequency !== 'one-off' ? (
-          <View className="mt-3 flex-row items-center justify-between">
-            <Text className="text-sm text-ink dark:text-ink-dark">Remind me</Text>
-            <Switch value={remindersEnabled} onValueChange={setRemindersEnabled} />
-          </View>
+          remindersAvailable() ? (
+            <View className="mt-3 flex-row items-center justify-between">
+              <Text className="text-sm text-ink dark:text-ink-dark">Remind me</Text>
+              <Switch value={remindersEnabled} onValueChange={setRemindersEnabled} />
+            </View>
+          ) : (
+            <Text className="mt-3 text-xs text-ink-faint dark:text-ink-faint-dark">
+              Reminders aren't available in Expo Go on Android — they'll work once this is a
+              standalone build.
+            </Text>
+          )
         ) : null}
 
         <View className="mt-4 flex-row gap-3">
