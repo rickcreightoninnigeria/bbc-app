@@ -16,6 +16,7 @@ export default function RootLayout() {
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="give" options={{ presentation: 'modal', title: 'Give' }} />
+            <Stack.Screen name="serve" options={{ presentation: 'modal', title: 'Serve' }} />
             <Stack.Screen
               name="resourcing-vision"
               options={{ title: 'Resourcing our Church Vision with Money' }}

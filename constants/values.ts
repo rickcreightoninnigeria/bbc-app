@@ -48,6 +48,7 @@ export const PILLARS: Pillar[] = [
           'Meal train / practical needs board',
           'Mission trip sign-ups',
         ],
+        externalHref: '/serve',
       },
       {
         slug: 'give',
