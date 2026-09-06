@@ -19,8 +19,8 @@ export default function Give() {
         Give Joyfully & Sacrificially
       </Text>
       <Text className="mt-2 text-sm text-ink-soft dark:text-ink-soft-dark">
-        We don't take card payments at BBC — giving happens by bank transfer, or in person on a
-        Sunday. Here's what you need for either, and a few thoughts on why we give at all.
+        Giving at BBC happens by bank transfer, or in person on a Sunday. Here's what you need
+        for either, and a few thoughts on why we give at all.
       </Text>
 
       <View className="mt-6 border-t border-rule dark:border-rule-dark pt-4">
