@@ -31,7 +31,7 @@ export function ValueDetailScreen({ pillar }: { pillar: PillarSlug }) {
             Also see
           </Text>
           {value.crossLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="mb-2 text-sm underline text-ink-soft dark:text-ink-soft-dark">
+            <Link key={link.href} href={link.href} className="mb-2 text-sm underline text-link dark:text-link-dark">
               {link.label}
             </Link>
           ))}

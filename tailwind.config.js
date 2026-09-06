@@ -15,6 +15,9 @@ module.exports = {
         rule: { DEFAULT: '#DDD8CB', dark: '#3A362C' },
         utility: { DEFAULT: '#EAE7DB', dark: '#262319' },
 
+        // Classic blue hyperlink, distinct from the pillar accents
+        link: { DEFAULT: '#2563EB', dark: '#60A5FA' },
+
         // Pillar accents — one per "Make Many Deep Disciples" section
         make: { DEFAULT: '#A5761F', dark: '#DDA748' },
         many: { DEFAULT: '#2F6B47', dark: '#66B385' },

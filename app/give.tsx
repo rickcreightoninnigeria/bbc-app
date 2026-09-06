@@ -51,7 +51,7 @@ export default function Give() {
         <Text className="mt-2 text-sm text-ink dark:text-ink-dark">
           However much or little, give freely and joyfully — that's the whole point.
         </Text>
-        <Link href="/resourcing-vision" className="mt-3 text-sm underline text-make dark:text-make-dark">
+        <Link href="/resourcing-vision" className="mt-3 text-sm underline text-link dark:text-link-dark">
           Read more: Resourcing our Church Vision with Money
         </Link>
       </View>
