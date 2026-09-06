@@ -38,6 +38,7 @@ export const PILLARS: Pillar[] = [
           'Daily verse / prayer notification',
         ],
         crossLinks: [{ label: 'Prayer Triplets hub', href: '/prayer-triplets' }],
+        externalHref: '/pray',
       },
       {
         slug: 'serve',
