@@ -170,6 +170,7 @@ export interface UtilityItem {
 }
 
 export const UTILITY_ITEMS: UtilityItem[] = [
+  { label: 'About Us', description: 'What we believe, our core values, and who leads BBC.', href: '/about' },
   { label: 'Give', description: 'Shortcut straight to giving — also lives under Make.', href: '/give' },
   { label: 'Member Directory', description: 'Shortcut — also reachable from Disciples → Family.', href: '/directory' },
   { label: 'Calendar', description: 'Single shared calendar, filtered by tag wherever it appears.', href: '/calendar' },

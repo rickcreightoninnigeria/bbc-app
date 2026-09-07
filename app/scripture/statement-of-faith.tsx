@@ -8,7 +8,7 @@ export default function StatementOfFaith() {
       <Stack.Screen options={{ title: 'Statement of Faith' }} />
       <PlaceholderScreen
         title="Statement of Faith"
-        note="Draft placeholder. BBC's statement of faith goes here, once the real text is available."
+        note="Draft placeholder. BBC's full statement of faith goes here, once the real text is available — see also the shorter 'What We Believe' under About Us."
       />
     </>
   );

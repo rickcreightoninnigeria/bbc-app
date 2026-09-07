@@ -21,6 +21,7 @@ export default function RootLayout() {
             <Stack.Screen name="scripture" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen name="magnify" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen name="family" options={{ presentation: 'modal', headerShown: false }} />
+            <Stack.Screen name="about" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen
               name="resourcing-vision"
               options={{ title: 'Resourcing our Church Vision with Money' }}

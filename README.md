@@ -124,6 +124,14 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   it. **None of this is visible in Expo Go** — icon and splash customization
   only take effect in a real (EAS/standalone) build, not the shared Expo Go
   container app.
+- **About Us lives in the Utility menu**, not under a pillar — it doesn't
+  belong to Make/Many/Deep/Disciples specifically. Core Values has real
+  content (all nine slogans, grouped and explained, each linking to where
+  that value actually lives in the app) and Who We Are lists BBC's real
+  leadership (Gwali Melton, Jessy Agal, Sam Eju). What We Believe is a stub
+  — deliberately distinct in scope from Scripture's Statement of Faith
+  (a short plain-language summary vs. the fuller formal statement), and
+  each links to the other.
 
 ## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 
