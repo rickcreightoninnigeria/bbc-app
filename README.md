@@ -108,6 +108,12 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   standard child-protection commitment statement and a report-a-concern
   section with `[safeguarding contact]` left as a placeholder. This is
   boilerplate, not BBC's actual reviewed policy — don't treat it as such.
+- **Family is now a hub too**, with real Community Groups content pulled
+  from the original "Community Groups overview (Leaders' Info)" doc — size,
+  make-up, commitments, and the Host/Coordinator/Pastoral Contact roles.
+  `[community groups contact]` is a placeholder for how someone actually
+  joins one. Prayer Triplets also got its real content from the Small Group
+  Strategy (v2) doc, replacing its placeholder.
 
 ## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 

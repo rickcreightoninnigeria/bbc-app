@@ -139,10 +139,7 @@ export const PILLARS: Pillar[] = [
           'Leader toolkit: WhatsApp link, meal rota, roles',
           'Newcomer / visitor welcome flow',
         ],
-        crossLinks: [
-          { label: 'Prayer Triplets hub', href: '/prayer-triplets' },
-          { label: 'Member Directory', href: '/directory' },
-        ],
+        externalHref: '/family',
       },
       {
         slug: 'magnify',
