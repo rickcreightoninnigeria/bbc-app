@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
+import { ExternalLink } from '../../components/ExternalLink';
 import { TextLink } from '../../components/TextLink';
 
 export default function SundayPrayerMeeting() {
@@ -22,6 +23,9 @@ export default function SundayPrayerMeeting() {
           Location
         </Text>
         <Text className="mt-2 text-sm text-ink dark:text-ink-dark">8 Wamba Road, Jos</Text>
+        <ExternalLink url="https://maps.app.goo.gl/6mkg6J6mopxa6vpW6" className="mt-2">
+          Open in Google Maps
+        </ExternalLink>
       </View>
 
       <View className="mt-6 border-t border-rule pt-4 dark:border-rule-dark">

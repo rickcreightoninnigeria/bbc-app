@@ -1,6 +1,8 @@
 import { Stack } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 
+import { ExternalLink } from '../../components/ExternalLink';
+
 export default function ServiceTimes() {
   return (
     <ScrollView className="flex-1 bg-bg dark:bg-bg-dark" contentContainerClassName="px-5 pt-6 pb-12">
@@ -32,6 +34,19 @@ export default function ServiceTimes() {
           because of the local government's monthly Sanitation exercise and travel
           restrictions.
         </Text>
+      </View>
+
+      <View className="mt-6 border-t border-rule pt-4 dark:border-rule-dark">
+        <Text className="text-xs uppercase tracking-wider text-ink-faint dark:text-ink-faint-dark">
+          How to Find Us
+        </Text>
+        <Text className="mt-2 text-sm text-ink dark:text-ink-dark">
+          Both the Sunday Service and Saturday Bible Study are at the same address: 8 Wamba
+          Road, Jos.
+        </Text>
+        <ExternalLink url="https://maps.app.goo.gl/6mkg6J6mopxa6vpW6" className="mt-2">
+          Open in Google Maps
+        </ExternalLink>
       </View>
     </ScrollView>
   );
