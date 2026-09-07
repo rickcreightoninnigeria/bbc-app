@@ -36,6 +36,12 @@ export default function ScriptureHub() {
         subtitle="What BBC believes, and why"
         accentClass="text-deep dark:text-deep-dark"
       />
+      <Card
+        href="/scripture/bible-study-reader"
+        title="Bible Study Reader App"
+        subtitle="A companion app for personal Bible study"
+        accentClass="text-deep dark:text-deep-dark"
+      />
     </ScrollView>
   );
 }

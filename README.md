@@ -114,6 +114,16 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   `[community groups contact]` is a placeholder for how someone actually
   joins one. Prayer Triplets also got its real content from the Small Group
   Strategy (v2) doc, replacing its placeholder.
+- **App icon, splash screen, and Android adaptive icon now use BBC's real
+  logo** — cropped from a WhatsApp group-icon screenshot (`#473483` purple,
+  extracted programmatically). The adaptive icon's foreground is the mark
+  only (no wordmark), transparent, sized within Android's ~66% safe zone,
+  since a circular launcher mask would clip the "BEREAN BIBLE CHURCH" text
+  if the full lockup were used there — the full lockup (mark + wordmark) is
+  used for the main `icon.png` and the splash screen, where nothing crops
+  it. **None of this is visible in Expo Go** — icon and splash customization
+  only take effect in a real (EAS/standalone) build, not the shared Expo Go
+  container app.
 
 ## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 
