@@ -50,6 +50,12 @@ lib/
   useGivingPlan.ts        Hook tying the above together for GivingPlanSection
   giftsSurvey.ts          Gift list, survey statements, scoring, Supabase submission
   prayerWall.ts           Prayer Request Wall: fetch/post/pray-count via Supabase + TanStack Query
+  authTypes.ts            Profile / RoleAssignment types
+  AuthContext.tsx         Session state, email+password + Google sign-in, exposed via useAuth()
+  directory.ts            fetchDirectory() — reads the profiles table
+components/
+  RequireAuth.tsx         Wraps a screen to require sign-in, with a reason shown to the user
+  SocialAuthButtons.tsx   Google (real) + Apple (visible, disabled) buttons shared by sign-in/up
 supabase/
   migrations/             SQL to run in your Supabase project's SQL editor
 ```
@@ -144,6 +150,35 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   before it's relied on, and will also need to be hosted at a public URL
   for the Play Store / App Store listing (an in-app screen alone doesn't
   satisfy that requirement — copy the same text to a hosted page too).
+- **Auth is feature-gated, not a login wall.** Most of the app works with no
+  account at all; only the Member Directory currently requires sign-in
+  (via `<RequireAuth>`, which shows a reason and a Sign In button rather
+  than blocking silently). Sessions persist on-device
+  (`persistSession: true`) until an explicit sign-out.
+- **Roles are a flexible many-to-many table, not a fixed tier column.**
+  `role_assignments` lets one person hold several roles at once — e.g.
+  `(community_group_leader, "Sabon Gari Group")` and
+  `(ministry_leader, "Children's Ministry")` as two separate rows for the
+  same user — rather than a single "member/leader/admin" enum. There's no
+  in-app way to assign roles yet; that's done directly via the Supabase
+  dashboard until an admin UI exists.
+- **Email + password works end-to-end today**, including password reset.
+  **Google Sign-In has real, working code** (`AuthContext.signInWithGoogle`,
+  using `expo-web-browser` + the PKCE flow) but needs a Google OAuth client
+  configured in Supabase before it'll actually complete — see "Setting up
+  Google Sign-In" below. **Apple Sign-In is a visible, disabled "coming
+  soon" button** — it needs a paid Apple Developer account before it can be
+  implemented at all (native entitlement, not just a config value), and per
+  Apple's App Store rules, an iOS build that offers Google Sign-In can't be
+  submitted to the App Store until Apple Sign-In exists too (this doesn't
+  block development or testing, only App Store submission).
+- **`profiles` is auto-created by a database trigger** the moment someone
+  signs up (`handle_new_user()`, pulling `full_name` from the signup
+  metadata) — the app never has to create this row itself. Verified against
+  the live project: signed up a test user via the admin API, confirmed the
+  trigger fired, confirmed RLS lets any authenticated user read the
+  directory but blocks anon entirely, confirmed a user can update their own
+  profile (and `updated_at` bumps correctly), then cleaned up the test data.
 
 ## Setting up EAS Build
 
@@ -166,6 +201,21 @@ something that can be done from here):
    produces a real, installable app — this is also the way to actually test
    push notifications, since Expo Go can't do that on Android (see the
    Prayer Wall/giving-plan notes above).
+
+## Setting up Google Sign-In (the app-side code already works; this is the missing piece)
+
+1. In [Google Cloud Console](https://console.cloud.google.com), create (or reuse) a
+   project, then go to APIs & Services → Credentials → Create Credentials →
+   OAuth client ID. This is free — no Play Console fee involved.
+2. Create a **Web application** type client (Supabase's OAuth flow needs this
+   type even for a mobile app) with an authorized redirect URI of
+   `https://<your-project-ref>.supabase.co/auth/v1/callback`.
+3. In the Supabase dashboard → Authentication → Providers → Google, paste in
+   the Client ID and Client Secret from step 2, and enable the provider.
+4. That's it on the code side — `signInWithGoogle()` already builds the
+   right redirect URL, opens the system browser via `expo-web-browser`, and
+   exchanges the returned code for a session. Test it once the provider is
+   enabled; no app changes should be needed.
 
 ## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 

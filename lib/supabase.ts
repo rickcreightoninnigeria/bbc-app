@@ -24,6 +24,10 @@ export const supabase: SupabaseClient | null = isSupabaseConfigured
         autoRefreshToken: true,
         persistSession: true,
         detectSessionInUrl: false,
+        // PKCE (not the default 'implicit') is required for Google/Apple
+        // sign-in, which exchange a `code` param for a session rather than
+        // getting tokens directly in the redirect URL.
+        flowType: 'pkce',
       },
     })
   : null;
