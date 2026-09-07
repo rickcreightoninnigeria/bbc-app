@@ -103,6 +103,7 @@ export const PILLARS: Pillar[] = [
           'Verse of the day',
           'Statement of faith reference',
         ],
+        externalHref: '/scripture',
       },
       {
         slug: 'grow',
@@ -151,7 +152,7 @@ export const PILLARS: Pillar[] = [
           'Worship setlists / song requests',
           'All-church gatherings, baptism celebrations',
         ],
-        crossLinks: [{ label: 'Calendar', href: '/calendar' }],
+        externalHref: '/magnify',
       },
     ],
   },

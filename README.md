@@ -93,7 +93,21 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   (`prayer_requests`, see `supabase/migrations/0002_prayer_requests.sql`);
   the "praying" counter increments through a security-definer Postgres
   function rather than a direct UPDATE grant, so posting can't be used to
-  tamper with someone else's request text.
+  tamper with someone else's request text. Verified end-to-end against the
+  live project: insert, read, the RPC increment, and that a direct tamper
+  attempt on request_text is silently rejected by RLS.
+- **Rooted in Scripture and Magnify God Together needed no backend at all.**
+  `/scripture/sermons` just opens BBC's existing YouTube and Spotify links in
+  the browser rather than embedding anything; `/magnify/service-times` is
+  static real content (Sunday Service 10–11:30am, Saturday Bible Study
+  8–10:30am, both at 8 Wamba Road, with the last-Saturday-of-the-month
+  exception for the government's Sanitation exercise). Both are hubs
+  matching Pray/Serve's shape, with the rest of their original features
+  left as stubs.
+- **Safeguarding & Policies has generic, unreviewed placeholder text** — a
+  standard child-protection commitment statement and a report-a-concern
+  section with `[safeguarding contact]` left as a placeholder. This is
+  boilerplate, not BBC's actual reviewed policy — don't treat it as such.
 
 ## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 

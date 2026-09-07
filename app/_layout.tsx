@@ -18,6 +18,8 @@ export default function RootLayout() {
             <Stack.Screen name="pray" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen name="give" options={{ presentation: 'modal', title: 'Give' }} />
             <Stack.Screen name="serve" options={{ presentation: 'modal', headerShown: false }} />
+            <Stack.Screen name="scripture" options={{ presentation: 'modal', headerShown: false }} />
+            <Stack.Screen name="magnify" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen
               name="resourcing-vision"
               options={{ title: 'Resourcing our Church Vision with Money' }}
