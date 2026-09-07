@@ -133,6 +133,40 @@ Adding a new feature under an existing value means editing `constants/values.ts`
   (a short plain-language summary vs. the fuller formal statement), and
   each links to the other.
 
+- **Bundle identifier set: `com.bereanbiblechurch.app`** (both iOS and
+  Android). This can't realistically change once submitted to a store, so
+  it's locked in now rather than left as a default.
+- **Privacy Policy is a real screen** (`/about/privacy-policy`), drafted to
+  describe exactly what this app does today — not generic boilerplate.
+  Distinguishes the Prayer Wall (public), Gifts Survey (leadership-only,
+  via Supabase), and Giving Plan (on-device only, never transmitted).
+  `[privacy contact]` is a placeholder. This needs BBC leadership review
+  before it's relied on, and will also need to be hosted at a public URL
+  for the Play Store / App Store listing (an in-app screen alone doesn't
+  satisfy that requirement — copy the same text to a hosted page too).
+
+## Setting up EAS Build
+
+`eas.json` has the standard three build profiles (development, preview,
+production) drafted, and `eas-cli` is installed as a dev dependency. What's
+still needed, and has to be done by whoever holds the accounts (not
+something that can be done from here):
+
+1. **An Expo account**, and `npx eas login` from a terminal — this opens a
+   browser for you to authenticate, same as the Supabase CLI login earlier.
+2. **`npx eas init`** to link this project to a real EAS project (creates an
+   `extra.eas.projectId` in `app.json`).
+3. **For Android**: no paid account is required just to *build* via EAS. To
+   actually *publish* to the Play Store, you need a Google Play Developer
+   account (one-time $25 fee).
+4. **For iOS**: an Apple Developer account ($99/year) is required — EAS can
+   manage signing/provisioning for you once you're logged into one via
+   `eas credentials`, but the account itself has to exist first.
+5. Once linked, `npx eas build --profile preview --platform android` (say)
+   produces a real, installable app — this is also the way to actually test
+   push notifications, since Expo Go can't do that on Android (see the
+   Prayer Wall/giving-plan notes above).
+
 ## Setting up Supabase (needed for the Gifts Survey and Prayer Wall to work)
 
 1. Create a project at [supabase.com](https://supabase.com) (free tier is fine to start).

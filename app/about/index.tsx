@@ -30,6 +30,12 @@ export default function AboutHub() {
         subtitle="BBC's leadership team"
         accentClass="text-ink dark:text-ink-dark"
       />
+      <Card
+        href="/about/privacy-policy"
+        title="Privacy Policy"
+        subtitle="What the app collects, and who can see it"
+        accentClass="text-ink dark:text-ink-dark"
+      />
     </ScrollView>
   );
 }

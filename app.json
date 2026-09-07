@@ -8,9 +8,11 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bereanbiblechurch.app"
     },
     "android": {
+      "package": "com.bereanbiblechurch.app",
       "adaptiveIcon": {
         "backgroundColor": "#473483",
         "foregroundImage": "./assets/android-icon-foreground.png",
